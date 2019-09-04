@@ -28,8 +28,9 @@ class MyFormState extends State<MyForm> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('User'),
                       TextFormField(
+                        decoration:
+                            InputDecoration(hintText: 'Enter User Name'),
                         validator: (value) {
                           if (value.isEmpty) {
                             return 'User is required!';
@@ -49,14 +50,17 @@ class MyFormState extends State<MyForm> {
                       ),
                       Padding(
                           padding: EdgeInsets.symmetric(vertical: 16),
-                          child: RaisedButton(
-                            child: Text('Submit'),
-                            onPressed: () {
-                              if (formKey.currentState.validate()) {
-                                Scaffold.of(context).showSnackBar(
-                                    SnackBar(content: Text('Processing Data')));
-                              }
+                          child: InkWell(
+                            // When the user taps the button, show a snackbar.
+                            onTap: () {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text('Tap'),
+                              ));
                             },
+                            child: Container(
+                              padding: EdgeInsets.all(12.0),
+                              child: Text('Submit'),
+                            ),
                           ))
                     ])));
       }),
